@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CRYZTXL Studios – Unity scripts and videos</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Rubik:wght@400;500;700&display=swap">
+<style>
+:root{
+  --bg:#07060d; --surface:#110e1f; --ink:#f1eeff; --muted:#a9a3c9;
+  --moss:#7c3aed; --banana:#3b82f6; --line:#8b5cf6; --onmoss:#ffffff;
+  color-scheme: dark;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.6 Rubik,system-ui,sans-serif}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--banana);outline-offset:3px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0;gap:1rem;flex-wrap:wrap}
+.logo{font-family:Bungee,Impact,sans-serif;font-size:1.25rem;text-decoration:none}
+nav a{margin-left:1.25rem;text-decoration:none;font-weight:500}
+nav a:hover{text-decoration:underline;text-decoration-thickness:3px;text-decoration-color:var(--banana)}
+.hero{padding:3rem 0 3.5rem}
+.hero h1{font-family:Bungee,Impact,sans-serif;font-weight:400;font-size:clamp(2.4rem,9vw,5.5rem);line-height:.98;margin:0 0 1.25rem;letter-spacing:.01em}
+.hero p{max-width:34rem;font-size:1.2rem;color:var(--muted);margin:0 0 1.75rem}
+.btn{display:inline-block;padding:.75rem 1.4rem;border:3px solid var(--line);border-radius:.6rem;background:var(--banana);color:#ffffff;font-weight:700;text-decoration:none;box-shadow:4px 4px 0 var(--line);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--line)}
+.btn.alt{background:var(--surface);color:var(--ink);margin-left:.5rem}
+section{padding:2.5rem 0}
+h2{font-family:Bungee,Impact,sans-serif;font-weight:400;font-size:clamp(1.6rem,5vw,2.4rem);margin:0 0 1.25rem}
+.script{background:var(--surface);border:3px solid var(--line);border-radius:.9rem;padding:1.5rem;box-shadow:6px 6px 0 var(--line)}
+.script h3{margin:0 0 .4rem;font-size:1.3rem}
+.script p{margin:.3rem 0 1rem;max-width:44rem}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;margin:0;padding:0;list-style:none}
+.tags li{background:var(--moss);color:var(--onmoss);border-radius:2rem;padding:.2rem .8rem;font-size:.9rem;font-weight:500}
+.videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:1.25rem}
+.video{display:block;text-decoration:none;background:var(--surface);border:3px solid var(--line);border-radius:.9rem;overflow:hidden}
+.video:hover .thumb::after{transform:scale(1.15)}
+.thumb{aspect-ratio:16/9;background:linear-gradient(135deg,#7c3aed,#1d4ed8);display:grid;place-items:center;position:relative}
+.thumb::after{content:"";width:0;height:0;border-left:1.6rem solid #ffffff;border-top:1rem solid transparent;border-bottom:1rem solid transparent;transition:transform .15s}
+.video div.info{padding:.9rem 1rem 1.1rem}
+.video strong{display:block;font-size:1.05rem}
+.video span{color:var(--muted);font-size:.95rem}
+.video span.by{display:block;margin-top:.5rem;color:var(--ink);font-weight:700}
+.dlwrap{margin-top:1rem}
+.search{display:block;width:100%;max-width:28rem;margin-top:1.5rem;padding:.8rem 1.1rem;border:3px solid var(--line);border-radius:2rem;background:var(--surface);color:var(--ink);font:inherit;box-shadow:4px 4px 0 var(--line)}
+.search::placeholder{color:var(--muted)}
+.search:focus-visible{outline:3px solid var(--banana);outline-offset:3px}
+#noResults,#noVideoResults{display:none;color:var(--muted);margin:1rem 0 0}
+#videoGrid{margin-top:1rem}
+.dl .thumb::after{border:0;border-left:1.1rem solid transparent;border-right:1.1rem solid transparent;border-top:1.6rem solid #ffffff}
+.rules{background:linear-gradient(135deg,#7c3aed,#2563eb);color:#ffffff;border:3px solid var(--line);border-radius:.9rem;padding:1.5rem}
+.rules h2{font-size:1.5rem;margin-bottom:.6rem}
+.rules ul{margin:0;padding-left:1.2rem}
+footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.95rem}
+.profile-btn{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:20;padding:.7rem 1.1rem;border:3px solid var(--line);border-radius:2rem;background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;font-weight:700;font-size:.95rem;text-decoration:none;box-shadow:4px 4px 0 var(--line);transition:transform .12s,box-shadow .12s}
+.profile-btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--line)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="#top">CRYZTXL Studios</a>
+    <nav><a href="#scripts">Scripts</a><a href="#videos">Videos</a><a href="#usage">Usage</a></nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <h1>Scripts and videos for Gorilla Tag fan games</h1>
+      <p>I make Unity C# scripts and show how they work in short videos. Watch a video, then see what the script does.</p>
+      <a class="btn" href="#videos">Watch the videos</a>
+      <a class="btn alt" href="https://discord.gg/mD674wjBeN" rel="noopener">Join my Discord</a>
+    </div>
+
+    <section id="scripts">
+      <h2>Scripts</h2>
+      <div class="script">
+        <h3>Unity package for Gorilla Tag fan games</h3>
+        <p>CRYZTXL Studios was created and founded by Marzo. On Discord and YouTube.</p>
+        <ul class="tags"><li>Unity</li><li>C#</li><li>Gorilla Tag fan game</li></ul>
+      </div>
+      <input type="search" id="scriptSearch" class="search" placeholder="Search scripts..." aria-label="Search scripts" autocomplete="off">
+      <p id="noResults">No scripts found.</p>
+      <div class="videos dlwrap">
+        <a class="video dl" href="https://drive.google.com/file/d/1F1bBcO7a3__1U-N4_bmSShsczLdVXSi1/view?usp=drive_link" target="_blank" rel="noopener">
+          <div class="thumb"></div>
+          <div class="info"><strong>Download CRYZTXL Locomotion</strong><span>Opens on Google Drive</span><span class="by">Click to download</span></div>
+        </a>
+        <a class="video dl" href="https://drive.google.com/file/d/1hv-lqtNQmWZhhMXwD4Nq35kX5fjsVO8z/view?usp=sharing" target="_blank" rel="noopener">
+          <div class="thumb"></div>
+          <div class="info"><strong>Download Wardrobe Plus</strong><span>Opens on Google Drive</span><span class="by">Click to download</span></div>
+        </a>
+        <a class="video dl" href="https://drive.google.com/file/d/1futXqA0KJKm-r7TcqPhoB-LlVZzVXisK/view?usp=sharing" target="_blank" rel="noopener">
+          <div class="thumb"></div>
+          <div class="info"><strong>Download ButtonsPlus</strong><span>Opens on Google Drive</span><span class="by">Click to download</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section id="videos">
+      <h2>Videos</h2>
+      <input type="search" id="videoSearch" class="search" placeholder="Search videos..." aria-label="Search videos" autocomplete="off">
+      <p id="noVideoResults">No videos found.</p>
+      <div class="videos" id="videoGrid"></div>
+    </section>
+
+    <section id="usage">
+      <div class="rules">
+        <h2>Using my scripts</h2>
+        <ul>
+          <li>Don't share or re-upload my scripts online without my permission.</li>
+          <li>Don't say you made them. Give credit to CRYZTXL Studios.</li>
+          <li>Want to use one in your game? Give credit to CRYZTXL Studios or Marzo.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>© <span id="yr"></span> CRYZTXL Studios. Not apart of Beeping Studios.</footer>
+</div>
+
+<a class="profile-btn" href="https://discord.com/users/1400917838843215992" rel="noopener">CONTACT ME?</a>
+
+<script>
+// Edit this list: replace title, note and url with your real videos.
+var VIDEOS = [
+  { title: "CRYZTXL Locomotion", note: "The official CRYZTXL locomotion made by CRYZTXL Studios", url: "https://youtu.be/OQJNafIL4eY", by: "Tutorial By: Marzo" },
+  { title: "Wardrobe Plus", note: "The best wardrobe available.", url: "https://youtu.be/zd5LVHqXfvo?si=7FV9EL-yhleZ5UaK", by: "Tutorial By: Beeps" },
+  { title: "ButtonsPlus", note: "First CRYZTXL Studios project and an original idea from the owner, aka Marzo.", url: "https://youtu.be/TokPp34Hs9I?si=qEFP1WdrJzB7iMUe", by: "Tutorial By: Marzo" }
+];
+var grid = document.getElementById("videoGrid");
+VIDEOS.forEach(function (v) {
+  var a = document.createElement("a");
+  a.className = "video"; a.href = v.url;
+  var t = document.createElement("div"); t.className = "thumb";
+  var i = document.createElement("div"); i.className = "info";
+  var s = document.createElement("strong"); s.textContent = v.title;
+  var n = document.createElement("span"); n.textContent = v.note;
+  i.appendChild(s); i.appendChild(n);
+  if (v.by) { var b = document.createElement("span"); b.className = "by"; b.textContent = v.by; i.appendChild(b); }
+  a.appendChild(t); a.appendChild(i); grid.appendChild(a);
+});
+var q = document.getElementById("scriptSearch"), none = document.getElementById("noResults");
+q.addEventListener("input", function () {
+  var t = q.value.trim().toLowerCase(), shown = 0;
+  document.querySelectorAll(".dl").forEach(function (c) {
+    var m = c.textContent.toLowerCase().indexOf(t) !== -1;
+    c.style.display = m ? "" : "none";
+    if (m) shown++;
+  });
+  none.style.display = shown ? "none" : "block";
+});
+var vq = document.getElementById("videoSearch"), vnone = document.getElementById("noVideoResults");
+vq.addEventListener("input", function () {
+  var t = vq.value.trim().toLowerCase(), shown = 0;
+  grid.querySelectorAll(".video").forEach(function (c) {
+    var m = c.textContent.toLowerCase().indexOf(t) !== -1;
+    c.style.display = m ? "" : "none";
+    if (m) shown++;
+  });
+  vnone.style.display = shown ? "none" : "block";
+});
+document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
