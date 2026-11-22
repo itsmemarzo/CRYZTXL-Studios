@@ -7,7 +7,7 @@ var VIDEOS = [
 var grid = document.getElementById("videoGrid");
 VIDEOS.forEach(function (v) {
   var a = document.createElement("a");
-  a.className = "video"; a.href = v.url;
+  a.className = "video"; a.href = v.url; a.target = "_blank"; a.rel = "noopener noreferrer";
   var t = document.createElement("div"); t.className = "thumb";
   var i = document.createElement("div"); i.className = "info";
   var s = document.createElement("strong"); s.textContent = v.title;
